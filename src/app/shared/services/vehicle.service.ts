@@ -1,13 +1,14 @@
 import { VehicleSize, VehicleType } from '../enums/vehicle.enum';
 
-import { IVehicleProvider } from '../interfaces/IVehicle.provider';
+import { IVehicleProvider } from './../../shared/interfaces/ivehicle.provider';
 import { Injectable } from '@angular/core';
-import { VehicleModel } from './../models/vehicle.model';
+import { VehicleModel } from '../models/vehicle.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class VehicleService implements IVehicleProvider {
+
     constructor() { }
     GetVehicle(): VehicleModel {
         const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -26,5 +27,6 @@ export class VehicleService implements IVehicleProvider {
                 return new VehicleModel(VehicleType.bus, VehicleSize.large);
             }
         }
+
     }
 }

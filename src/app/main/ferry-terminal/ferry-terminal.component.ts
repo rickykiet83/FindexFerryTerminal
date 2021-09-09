@@ -1,5 +1,5 @@
 import { VehicleModel } from './../../shared/models/vehicle.model';
-import { IVehicleProvider, VEHICLE_PROVIDER } from '../../shared/interfaces/IVehicle.provider';
+import { IVehicleProvider, VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
 import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
@@ -19,7 +19,7 @@ export class FerryTerminalComponent implements OnInit {
 
     }
 
-    getVehicle() {
+    public getVehicle() {
         this.currentVehicle = this.vehicleProvider.GetVehicle();
         console.log(this.currentVehicle);
     }

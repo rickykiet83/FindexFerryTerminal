@@ -1,4 +1,3 @@
-
 export enum VehicleSize {
     small,
     large
