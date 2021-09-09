@@ -1,41 +1,30 @@
-import { IVehicleProvider, VehicleSize, VehicleSummary, VehicleType } from './../../shared/interfaces/ivehicle.provider';
+import { VehicleSize, VehicleType } from '../enums/vehicle.enum';
 
+import { IVehicleProvider } from '../interfaces/IVehicle.provider';
 import { Injectable } from '@angular/core';
+import { VehicleModel } from './../models/vehicle.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class VehicleService implements IVehicleProvider {
+    constructor() { }
+    GetVehicle(): VehicleModel {
+        const randomNumber = Math.floor(Math.random() * 4) + 1;
 
-  constructor() { }
-  GetVehicle(): VehicleSummary {
-    const randomNumber = Math.floor(Math.random() * 4) + 1;
-
-    switch (randomNumber) {
-      case 1: {
-        return {
-          type: VehicleType.car,
-          category: VehicleSize.small
-        };
-      }
-      case 2: {
-        return {
-          type: VehicleType.van,
-          category: VehicleSize.small
-        };
-      }
-      case 3: {
-        return {
-          type: VehicleType.truck,
-          category: VehicleSize.large
-        };
-      }
-      default: {
-        return {
-          type: VehicleType.bus,
-          category: VehicleSize.large
-        };
-      }
+        switch (randomNumber) {
+            case 1: {
+                return new VehicleModel(VehicleType.car, VehicleSize.small);
+            }
+            case 2: {
+                return new VehicleModel(VehicleType.van, VehicleSize.small);
+            }
+            case 3: {
+                return new VehicleModel(VehicleType.truck, VehicleSize.large);
+            }
+            default: {
+                return new VehicleModel(VehicleType.bus, VehicleSize.large);
+            }
+        }
     }
-  }
 }
