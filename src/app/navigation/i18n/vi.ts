@@ -1,5 +1,5 @@
 export const locale = {
-  lang: 'en',
+  lang: 'vi',
   data: {
     'NAV': {
       'APPLICATIONS': 'Applications',
@@ -8,7 +8,7 @@ export const locale = {
         'BADGE': '25'
       },
       'HOME': {
-        'TITLE': 'Home',
+        'TITLE': 'Trang chủ',
       }
     }
   }
