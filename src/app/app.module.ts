@@ -1,14 +1,70 @@
-import { AppComponent } from "./app.component";
-import { BrowserModule } from "@angular/platform-browser";
-import { FerryTerminalComponent } from "./ferryterminal/ferry.terminal.component";
-import { HardcodedVehicleService } from "../services/hardcoded.vehicle.service";
-import { NgModule } from "@angular/core";
-import { VEHICLE_PROVIDER } from "src/interfaces/ivehicle.provider";
+import { FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AppComponent } from 'app/app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { FuseModule } from '@fuse/fuse.module';
+import { FuseSharedModule } from '@fuse/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from 'app/layout/layout.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { NgModule } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { VEHICLE_PROVIDER } from './shared/interfaces/ivehicle.provider';
+import { VehicleService } from './shared/services/vehicle.service';
+import { fuseConfig } from 'app/fuse-config';
+
+const appRoutes: Routes = [
+  {
+    path: 'home',
+    loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'ferry-terminal',
+    loadChildren: () => import('./main/ferry-terminal/ferry-terminal.module').then(m => m.FerryTerminalModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
+  }
+];
 
 @NgModule({
-  declarations: [AppComponent, FerryTerminalComponent],
-  imports: [BrowserModule],
-  providers: [{ provide: VEHICLE_PROVIDER, useClass: HardcodedVehicleService }],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+
+    TranslateModule.forRoot(),
+
+    // Material moment date module
+    MatMomentDateModule,
+
+    // Material
+    MatButtonModule,
+    MatIconModule,
+
+    // Fuse modules
+    FuseModule.forRoot(fuseConfig),
+    FuseProgressBarModule,
+    FuseSharedModule,
+    FuseSidebarModule,
+    FuseThemeOptionsModule,
+
+    // App modules
+    LayoutModule,
+  ],
+  providers: [{ provide: VEHICLE_PROVIDER, useClass: VehicleService }],
+  bootstrap: [
+    AppComponent
+  ]
 })
-export class AppModule { }
+export class AppModule {
+}
