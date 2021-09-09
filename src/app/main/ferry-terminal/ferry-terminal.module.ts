@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
+import { VehicleService } from './../../shared/services/vehicle.service';
 
 const routes = [
     {
@@ -22,7 +24,9 @@ const routes = [
 
         FuseSharedModule,
         MatButtonModule,
-        MatIconModule
-    ]
+        MatIconModule,
+    ],
+    providers: [{ provide: VEHICLE_PROVIDER, useClass: VehicleService }],
+
 })
 export class FerryTerminalModule { }

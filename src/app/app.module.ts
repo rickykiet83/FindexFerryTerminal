@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { VEHICLE_PROVIDER } from './shared/interfaces/IVehicle.provider';
+import { VEHICLE_PROVIDER } from './shared/interfaces/ivehicle.provider';
 import { VehicleService } from './shared/services/vehicle.service';
 import { fuseConfig } from 'app/fuse-config';
 
@@ -61,7 +61,6 @@ const appRoutes: Routes = [
         // App modules
         LayoutModule,
     ],
-    providers: [{ provide: VEHICLE_PROVIDER, useClass: VehicleService }],
     bootstrap: [
         AppComponent
     ]
