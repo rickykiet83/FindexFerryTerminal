@@ -18,53 +18,52 @@ import { VehicleService } from './shared/services/vehicle.service';
 import { fuseConfig } from 'app/fuse-config';
 
 const appRoutes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)
-  },
-  {
-    path: 'ferry-terminal',
-    loadChildren: () => import('./main/ferry-terminal/ferry-terminal.module').then(m => m.FerryTerminalModule)
-  },
-  {
-    path: '**',
-    redirectTo: 'home'
-  }
+    {
+        path: 'home',
+        loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)
+    },
+    {
+        path: 'ferry-terminal',
+        loadChildren: () => import('./main/ferry-terminal/ferry-terminal.module').then(m => m.FerryTerminalModule)
+    },
+    {
+        path: '**',
+        redirectTo: 'home'
+    }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
 
-    TranslateModule.forRoot(),
+        TranslateModule.forRoot(),
 
-    // Material moment date module
-    MatMomentDateModule,
+        // Material moment date module
+        MatMomentDateModule,
 
-    // Material
-    MatButtonModule,
-    MatIconModule,
+        // Material
+        MatButtonModule,
+        MatIconModule,
 
-    // Fuse modules
-    FuseModule.forRoot(fuseConfig),
-    FuseProgressBarModule,
-    FuseSharedModule,
-    FuseSidebarModule,
-    FuseThemeOptionsModule,
+        // Fuse modules
+        FuseModule.forRoot(fuseConfig),
+        FuseProgressBarModule,
+        FuseSharedModule,
+        FuseSidebarModule,
+        FuseThemeOptionsModule,
 
-    // App modules
-    LayoutModule,
-  ],
-  providers: [{ provide: VEHICLE_PROVIDER, useClass: VehicleService }],
-  bootstrap: [
-    AppComponent
-  ]
+        // App modules
+        LayoutModule,
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 }
