@@ -8,14 +8,14 @@ import {
 @Component({
   selector: "ferry-terminal",
   templateUrl: "./ferry.terminal.component.html",
-  styleUrls: ["./ferry.terminal.component.css"]
+  styleUrls: ["./ferry.terminal.component.scss"]
 })
 export class FerryTerminalComponent {
   currentVehicle: VehicleSummary;
 
   constructor(
     @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider
-  ) {}
+  ) { }
 
   public getVehicle() {
     this.currentVehicle = this.vehicleProvider.GetVehicle();
