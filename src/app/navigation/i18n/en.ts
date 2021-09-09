@@ -6,6 +6,9 @@ export const locale = {
       'FERRY_TERMINAL': {
         'TITLE': 'Ferry Terminal',
         'BADGE': '25'
+      },
+      'HOME': {
+        'TITLE': 'Home',
       }
     }
   }
