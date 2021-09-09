@@ -1,6 +1,6 @@
 import { VehicleSize, VehicleType } from "../enums/vehicle.enum";
 
-import { IVehicle } from './../interfaces/IVehicle';
+import { IVehicle } from '../interfaces/vehicle.interface';
 
 export class VehicleModel implements IVehicle {
     type: VehicleType;
