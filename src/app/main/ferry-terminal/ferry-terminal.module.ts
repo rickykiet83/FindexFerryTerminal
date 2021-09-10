@@ -1,3 +1,4 @@
+import { FerryCardComponent } from './components/ferry-card/ferry-card.component';
 import { FerryTerminalComponent } from './ferry-terminal.component';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +17,7 @@ const routes = [
 ];
 
 @NgModule({
-    declarations: [FerryTerminalComponent],
+    declarations: [FerryTerminalComponent, FerryCardComponent],
     imports: [
         RouterModule.forChild(routes),
 
