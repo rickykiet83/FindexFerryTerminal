@@ -10,6 +10,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 export class FerryTerminalComponent implements OnInit {
 
     currentVehicle: VehicleModel;
+    vehicles: VehicleModel[] = [];
 
     constructor(
         @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider
@@ -21,6 +22,10 @@ export class FerryTerminalComponent implements OnInit {
 
     public getVehicle() {
         this.currentVehicle = this.vehicleProvider.GetVehicle();
-        console.log(this.currentVehicle);
+        this.addVehicle(this.currentVehicle);
+    }
+
+    addVehicle(item: VehicleModel) {
+        this.vehicles.push(item);
     }
 }

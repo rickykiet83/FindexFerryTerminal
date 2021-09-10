@@ -1,13 +1,13 @@
 import { FerryTerminalComponent } from './ferry-terminal.component';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
 import { VehicleService } from './../../shared/services/vehicle.service';
-
 const routes = [
     {
         path: '',
@@ -25,6 +25,7 @@ const routes = [
         FuseSharedModule,
         MatButtonModule,
         MatIconModule,
+        MatCardModule
     ],
     providers: [{ provide: VEHICLE_PROVIDER, useClass: VehicleService }],
 
