@@ -1,4 +1,3 @@
-import { FerrySize } from './../../shared/enums/ferry.enum';
 import { SystemConstants } from './../../common/system.constants';
 import { VehicleSize } from './../../shared/enums/vehicle.enum';
 import { VehicleModel } from './../../shared/models/vehicle.model';
