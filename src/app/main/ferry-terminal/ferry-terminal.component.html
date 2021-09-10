@@ -5,7 +5,7 @@
             <button mat-raised-button color="primary">Go</button>
         </div>
 
-        <div fxLayoutGap="20px" fxFill fxLayoutAlign="flex-evenly">
+        <div fxLayoutGap="20px" fxFill fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="flex-evenly">
             <div fxFlex>
                 <app-ferry-card [title]="'Small Ferry'" [vehicles]="smallVehicles"></app-ferry-card>
             </div>
