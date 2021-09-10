@@ -14,9 +14,8 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="flex-start">
-                        <mat-card *ngFor="let item of getVehicles(size.small)" class="mb-20" fxFlex="16"
-                            fxLayoutGap="20px">
+                    <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutAlign="flex-start">
+                        <mat-card *ngFor="let item of getVehicles(size.small)" class="mb-20" fxFlex fxLayoutGap="20px">
                             <mat-card-header>
                                 <div mat-card-avatar class="example-header-image"></div>
                                 <mat-card-title class="text-capitalized">
@@ -54,10 +53,9 @@
                     </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <div fxLayout="row wrap" fxLay fxLayout.lt-sm="column" fxLayoutGap="20px"
+                    <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayout.lt-sm="column" fxLayoutGap="20px"
                         fxLayoutAlign="flex-start">
-                        <mat-card *ngFor="let item of getVehicles(size.large)" fxLay class="mb-20" fxFlex="16"
-                            fxLayoutGap="20px">
+                        <mat-card *ngFor="let item of getVehicles(size.large)" class="mb-20" fxFlex fxLayoutGap="20px">
                             <mat-card-header>
                                 <div mat-card-avatar class="example-header-image"></div>
                                 <mat-card-title class="text-capitalized">
