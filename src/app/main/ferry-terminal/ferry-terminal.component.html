@@ -1,6 +1,21 @@
 <div class="page-layout blank p-24" fusePerfectScrollbar>
+    <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+            <button mat-raised-button color="secondary" (click)="getVehicle()">Get Vehicle</button>
+            <button mat-raised-button color="primary">Go</button>
+        </div>
 
-    <button mat-raised-button color="primary" (click)="getVehicle()">Get Vehicle</button>
-
+        <div fxLayoutGap="20px" fxFill fxLayoutAlign="flex-evenly">
+            <div fxFlex>
+                <app-ferry-card [title]="'Small Ferry'" [vehicles]="smallVehicles"></app-ferry-card>
+            </div>
+            <div fxFlex>
+                <app-ferry-card [title]="'Large Ferry'" [vehicles]="largeVehicles"></app-ferry-card>
+            </div>
+            <div fxFlex *ngIf="waitingVehicleList.length > 0">
+                <app-ferry-card [title]="'Waiting Vehicle List'" [vehicles]="waitingVehicleList"></app-ferry-card>
+            </div>
+        </div>
+    </div>
 
 </div>
