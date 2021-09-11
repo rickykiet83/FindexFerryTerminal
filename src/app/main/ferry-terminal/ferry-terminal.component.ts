@@ -15,13 +15,11 @@ export class FerryTerminalComponent implements OnInit {
     currentVehicle: VehicleModel;
     vehicles: VehicleModel[] = [];
     ferries: FerryModel[] = [];
-    private ferryService: FerryService;
 
     constructor(
         @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider,
-        private terminalService: TerminalService,
+        private ferryService: FerryService,
     ) {
-        this.ferryService = this.terminalService.ferryService;
     }
 
     ngOnInit(): void {
@@ -29,6 +27,7 @@ export class FerryTerminalComponent implements OnInit {
     }
 
     public getVehicle() {
+        if (this.ferryService.isAllFull) return;
         this.currentVehicle = this.vehicleProvider.GetVehicle();
         this.addVehicle(this.currentVehicle);
     }
@@ -39,5 +38,9 @@ export class FerryTerminalComponent implements OnInit {
 
     ferryStart(ferry: FerryModel) {
         this.ferryService.FerryStart(ferry.id);
+    }
+
+    get isAllFull() {
+        return this.ferryService.isAllFull;
     }
 }

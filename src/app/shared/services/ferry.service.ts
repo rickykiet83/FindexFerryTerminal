@@ -3,28 +3,15 @@ import { FerrySize } from './../enums/ferry.enum';
 import { IFerryProvider } from '../interfaces/iferry.provider';
 import { IVehicle } from '../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
+import { TerminalService } from './terminal.service';
 import { VehicleModel } from '../models/vehicle.model';
 import { VehicleSize } from '../enums/vehicle.enum';
 
 @Injectable()
-export class FerryService implements IFerryProvider {
-
-    private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
-    private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
-
-    private ferries: FerryModel[] = [];
-
-    constructor() {
-        this.ferries.push(this.smallFerry);
-        this.ferries.push(this.largeFerry);
-    }
+export class FerryService extends TerminalService implements IFerryProvider {
 
     FerryStart(id: string | number) {
         this.GetFerry(id).Go();
-    }
-
-    GetFerries(): FerryModel[] {
-        return this.ferries;
     }
 
     AddVehicle(item: IVehicle) {
@@ -32,7 +19,7 @@ export class FerryService implements IFerryProvider {
         switch (item.category) {
 
             case VehicleSize.small:
-                ferryAvail = this.ferries.find(f => f.size === FerrySize.small &&
+                ferryAvail = this.GetFerries().find(f => f.size === FerrySize.small &&
                     !f.isFull);
                 if (ferryAvail) {
                     this.GetFerry(ferryAvail.id).addVehicle(item);
@@ -40,7 +27,7 @@ export class FerryService implements IFerryProvider {
                 break;
 
             case VehicleSize.large:
-                ferryAvail = this.ferries.find(f => f.size === FerrySize.large &&
+                ferryAvail = this.GetFerries().find(f => f.size === FerrySize.large &&
                     !f.isFull);
                 if (ferryAvail) {
                     this.GetFerry(ferryAvail.id).addVehicle(item);
@@ -50,7 +37,7 @@ export class FerryService implements IFerryProvider {
     }
 
     GetFerry(id: number | string): FerryModel {
-        return this.ferries.find(f => f.id === id);
+        return this.GetFerries().find(f => f.id === id);
     }
 
     GetVehicles(id: number | string): VehicleModel[] {
