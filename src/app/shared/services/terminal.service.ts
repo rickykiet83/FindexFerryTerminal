@@ -15,6 +15,9 @@ export class TerminalService implements ITerminal {
     private tickets: TicketModel[] = [];
 
     private terminalWorkerBonus = 0.1;
+    private terminalBonus = 0.9;
+
+    private vehicles: IVehicle[] = [];
 
     constructor() {
         this.ferries.push(this.smallFerry);
@@ -30,6 +33,7 @@ export class TerminalService implements ITerminal {
     }
 
     AddVehicle(item: IVehicle) {
+        this.vehicles.push(item);
         this.GenerateTicket(item);
     }
 
@@ -50,7 +54,7 @@ export class TerminalService implements ITerminal {
     get terminalProfit(): number {
         if (this.tickets.length > 0) {
             const total = this.tickets.map(t => t.cost)
-                .reduce((accumulator, currentValue) => accumulator + (currentValue * 0.9), 0);
+                .reduce((accumulator, currentValue) => accumulator + (currentValue * this.terminalBonus), 0);
             return +total.toFixed(2);
         }
         return 0;
@@ -60,12 +64,8 @@ export class TerminalService implements ITerminal {
         return this.ferries.length;
     }
 
-    get isSmallFerriesFull(): boolean {
-        return this.ferries.filter(f => f.size === FerrySize.small && f.isFull).length > 0;
-    }
-
-    get isLargeFerryFull(): boolean {
-        return this.ferries.filter(f => f.size === FerrySize.large && f.isFull).length > 0;
+    protected GetFerriesBySize(size: FerrySize): FerryModel[] {
+        return this.GetFerries().filter(f => f.size === size);
     }
 
     get isAllFull(): boolean {

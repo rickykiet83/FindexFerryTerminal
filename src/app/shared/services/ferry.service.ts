@@ -4,7 +4,6 @@ import { IFerryProvider } from '../interfaces/iferry.provider';
 import { IVehicle } from '../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
 import { TerminalService } from './terminal.service';
-import { VehicleModel } from '../models/vehicle.model';
 import { VehicleSize } from '../enums/vehicle.enum';
 
 @Injectable()
@@ -19,13 +18,11 @@ export class FerryService extends TerminalService implements IFerryProvider {
         switch (item.category) {
 
             case VehicleSize.small:
-                ferryAvail = this.GetFerries().find(f => f.size === FerrySize.small &&
-                    !f.isFull);
+                ferryAvail = this.GetFerriesBySize(FerrySize.small).filter(f => !f.isFull)[0];
                 break;
 
             case VehicleSize.large:
-                ferryAvail = this.GetFerries().find(f => f.size === FerrySize.large &&
-                    !f.isFull);
+                ferryAvail = this.GetFerriesBySize(FerrySize.large).filter(f => !f.isFull)[0];
                 break;
         }
 
@@ -39,7 +36,4 @@ export class FerryService extends TerminalService implements IFerryProvider {
         return this.GetFerries().find(f => f.id === id);
     }
 
-    GetVehicles(id: number | string): VehicleModel[] {
-        return this.GetFerry(id).GetVehicles();
-    }
 }
