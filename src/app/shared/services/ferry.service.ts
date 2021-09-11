@@ -10,17 +10,17 @@ import { VehicleSize } from '../enums/vehicle.enum';
 @Injectable()
 export class FerryService implements IFerryProvider {
 
-    private smallFerry = new FerryModel('Small Ferry', 6, FerrySize.small);
-    private largeFerry = new FerryModel('Large Ferry', 8, FerrySize.small);
+    private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
+    private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.small);
 
     AddVehicle(item: IVehicle): boolean {
         if (item.category === VehicleSize.small &&
-            this.smallFerry.totalVehicle < SystemConstants.TOTAL_ITEM_ON_SMALL_FERRY) {
+            !this.smallFerry.isFull) {
             this.smallFerry.addVehicle(item);
             return true;
         }
         if (item.category === VehicleSize.large &&
-            this.largeFerry.totalVehicle < SystemConstants.TOTAL_ITEM_ON_LARGE_FERRY) {
+            !this.largeFerry.isFull) {
             this.largeFerry.addVehicle(item);
             return true;
         }

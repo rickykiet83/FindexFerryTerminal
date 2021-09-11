@@ -19,6 +19,10 @@ export class FerryModel implements IFerry {
         return this.vehicles.map(v => new VehicleModel(v.type, v.category));
     }
 
+    get isFull(): boolean {
+        return this.totalVehicle >= this.capacity;
+    }
+
     get totalVehicle(): number {
         return this.vehicles.length;
     }
