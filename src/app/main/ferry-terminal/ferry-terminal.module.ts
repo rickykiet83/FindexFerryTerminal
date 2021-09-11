@@ -32,6 +32,7 @@ const routes = [
     ],
     providers: [
         FerryService,
+        { provide: TerminalService, useClass: FerryService },
         { provide: VEHICLE_PROVIDER, useClass: VehicleService },
     ],
 

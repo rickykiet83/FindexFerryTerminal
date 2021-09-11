@@ -10,7 +10,7 @@ import { VehicleSize } from '../enums/vehicle.enum';
 export class FerryService extends TerminalService implements IFerryProvider {
 
     FerryStart(id: string | number) {
-        this.GetFerry(id).Go();
+        this.GetFerryById(id).Go();
     }
 
     AddVehicle(item: IVehicle) {
@@ -27,12 +27,12 @@ export class FerryService extends TerminalService implements IFerryProvider {
         }
 
         if (ferryAvail) {
-            this.GetFerry(ferryAvail.id).addVehicle(item);
+            this.GetFerryById(ferryAvail.id).addVehicle(item);
             super.AddVehicle(item);
         }
     }
 
-    GetFerry(id: number | string): FerryModel {
+    GetFerryById(id: number | string): FerryModel {
         return this.GetFerries().find(f => f.id === id);
     }
 

@@ -2,23 +2,26 @@ import { FerryModel } from '../models/ferry.model';
 import { FerrySize } from '../enums/ferry.enum';
 import { ITerminal } from './../interfaces/terminal.interface';
 import { IVehicle } from './../interfaces/vehicle.interface';
+import { Injectable } from '@angular/core';
 import { TicketModel } from '../models/ticket.model';
 import { VehicleModel } from '../models/vehicle.model';
 
+@Injectable()
 export abstract class TerminalService implements ITerminal {
 
     private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
     private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
     private ferries: FerryModel[] = [];
-
     private tickets: TicketModel[] = [];
-
     private terminalWorkerBonus = 0.1;
     private terminalBonus = 0.9;
-
     private vehicles: IVehicle[] = [];
 
     constructor() {
+        this.initFerries();
+    }
+
+    private initFerries() {
         this.ferries.push(this.smallFerry);
         this.ferries.push(this.largeFerry);
     }
