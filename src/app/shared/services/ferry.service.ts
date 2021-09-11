@@ -13,6 +13,17 @@ export class FerryService implements IFerryProvider {
     private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
     private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.small);
 
+    private ferries: FerryModel[] = [];
+
+    constructor() {
+        this.ferries.push(this.smallFerry);
+        this.ferries.push(this.largeFerry);
+    }
+
+    GetFerries(): FerryModel[] {
+        return this.ferries;
+    }
+
     AddVehicle(item: IVehicle): boolean {
         if (item.category === VehicleSize.small &&
             !this.smallFerry.isFull) {

@@ -16,15 +16,19 @@ export class FerryTerminalComponent implements OnInit {
     currentVehicle: VehicleModel;
     vehicles: VehicleModel[] = [];
     waitingVehicleList: VehicleModel[] = [];
+    ferries: FerryModel[] = [];
 
     constructor(
         @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider,
         public ferryService: FerryService
     ) {
-
+        this.ferries = this.ferryService.GetFerries();
     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        console.log(this.ferries);
+
+    }
 
     public getVehicle() {
         this.currentVehicle = this.vehicleProvider.GetVehicle();

@@ -6,12 +6,11 @@
         </div>
 
         <div fxLayoutGap="20px" fxFill fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="flex-evenly">
-            <div fxFlex>
-                <app-ferry-card [title]="smallFerry.title" [vehicles]="smallFerry.GetVehicles()"></app-ferry-card>
-            </div>
-            <div fxFlex>
-                <app-ferry-card [title]="largeFerry.title" [vehicles]="largeFerry.GetVehicles()"></app-ferry-card>
-            </div>
+            <ng-container *ngFor="let f of ferries">
+                <div fxFlex>
+                    <app-ferry-card [title]="f.title" [vehicles]="f.GetVehicles()"></app-ferry-card>
+                </div>
+            </ng-container>
             <div fxFlex *ngIf="waitingVehicleList.length > 0">
                 <app-ferry-card [title]="'Waiting Vehicle List'" [vehicles]="waitingVehicleList"></app-ferry-card>
             </div>
