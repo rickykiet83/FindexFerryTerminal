@@ -21,20 +21,17 @@ export class FerryService extends TerminalService implements IFerryProvider {
             case VehicleSize.small:
                 ferryAvail = this.GetFerries().find(f => f.size === FerrySize.small &&
                     !f.isFull);
-                if (ferryAvail) {
-                    this.GetFerry(ferryAvail.id).addVehicle(item);
-                    super.AddVehicle(item);
-                }
                 break;
 
             case VehicleSize.large:
                 ferryAvail = this.GetFerries().find(f => f.size === FerrySize.large &&
                     !f.isFull);
-                if (ferryAvail) {
-                    this.GetFerry(ferryAvail.id).addVehicle(item);
-                    super.AddVehicle(item);
-                }
                 break;
+        }
+
+        if (ferryAvail) {
+            this.GetFerry(ferryAvail.id).addVehicle(item);
+            super.AddVehicle(item);
         }
     }
 

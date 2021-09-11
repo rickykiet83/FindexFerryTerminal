@@ -1,26 +1,8 @@
 <div class="page-layout blank p-24" fusePerfectScrollbar>
     <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
         <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
-            <mat-card>
-                <mat-card-header class="mb-8">
-                    <mat-card-title>
-                        Dashboard
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column" fxLayouAlign="flex-start">
-                        <div>
-                            The Terminal: {{terminalProfit | currency: 'AUD'}}
-                        </div>
-                        <div>
-                            The Ferry Worker: {{terminalWorkerProfit | currency: 'AUD'}}
-                        </div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
             <button [disabled]="isAllFull" mat-raised-button color="secondary" (click)="getVehicle()">Get
                 Vehicle</button>
-
         </div>
 
         <div fxLayoutGap="20px" fxFill fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="flex-evenly">
