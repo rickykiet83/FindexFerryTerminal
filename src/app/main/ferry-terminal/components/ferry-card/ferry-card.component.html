@@ -1,6 +1,5 @@
 <mat-card>
     <mat-card-header class="mb-8" [class.full_background]="ferry.isFull">
-        <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>
             <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
                 <div>
@@ -8,7 +7,7 @@
                     <span class="text-semibold" *ngIf="ferry.isFull"> - FULL</span>
                 </div>
                 <div>
-                    <button *ngIf="ferry.isFull" mat-raised-button color="primary" (click)="ferryStart()">Go</button>
+                    <button *ngIf="totalItem > 0" mat-raised-button color="primary" (click)="ferryStart()">Go</button>
                 </div>
             </div>
         </mat-card-title>

@@ -18,7 +18,7 @@ export class VehicleModel implements IVehicle {
         return VehicleSize[this.category];
     }
 
-    get iconName(): string {
+    private get iconName(): string {
         return VehicleType[this.type] + '.png';
     }
 

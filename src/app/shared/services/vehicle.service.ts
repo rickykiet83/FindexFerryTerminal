@@ -7,7 +7,6 @@ import { VehicleModel } from '../models/vehicle.model';
 @Injectable()
 export class VehicleService implements IVehicleProvider {
 
-    constructor() { }
     GetVehicle(): VehicleModel {
         const randomNumber = Math.floor(Math.random() * 4) + 1;
 

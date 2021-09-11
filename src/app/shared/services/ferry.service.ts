@@ -23,6 +23,7 @@ export class FerryService extends TerminalService implements IFerryProvider {
                     !f.isFull);
                 if (ferryAvail) {
                     this.GetFerry(ferryAvail.id).addVehicle(item);
+                    super.AddVehicle(item);
                 }
                 break;
 
@@ -31,6 +32,7 @@ export class FerryService extends TerminalService implements IFerryProvider {
                     !f.isFull);
                 if (ferryAvail) {
                     this.GetFerry(ferryAvail.id).addVehicle(item);
+                    super.AddVehicle(item);
                 }
                 break;
         }

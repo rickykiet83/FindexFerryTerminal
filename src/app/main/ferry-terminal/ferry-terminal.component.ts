@@ -1,4 +1,3 @@
-import { TerminalService } from './../../shared/services/terminal.service';
 import { FerryService } from 'app/shared/services/ferry.service';
 import { FerryModel } from './../../shared/models/ferry.model';
 import { VehicleModel } from './../../shared/models/vehicle.model';
@@ -34,6 +33,14 @@ export class FerryTerminalComponent implements OnInit {
 
     addVehicle(item: VehicleModel) {
         this.ferryService.AddVehicle(item);
+    }
+
+    get terminalWorkerProfit(): number {
+        return this.ferryService.terminalWorkerProfit;
+    }
+
+    get terminalProfit(): number {
+        return this.ferryService.terminalProfit;
     }
 
     ferryStart(ferry: FerryModel) {
