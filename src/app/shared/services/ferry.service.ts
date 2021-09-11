@@ -3,7 +3,6 @@ import { FerrySize } from './../enums/ferry.enum';
 import { IFerryProvider } from '../interfaces/iferry.provider';
 import { IVehicle } from '../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
-import { SystemConstants } from 'app/common/system.constants';
 import { VehicleModel } from '../models/vehicle.model';
 import { VehicleSize } from '../enums/vehicle.enum';
 
