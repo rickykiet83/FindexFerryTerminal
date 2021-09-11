@@ -1,7 +1,7 @@
-import { VehicleSize, VehicleType } from "../enums/vehicle.enum";
+import { VehicleSize, VehicleType } from '../enums/vehicle.enum';
 
 import { BaseModel } from './base.model';
-import { IVehicle } from "../interfaces/vehicle.interface";
+import { IVehicle } from '../interfaces/vehicle.interface';
 
 export class VehicleModel extends BaseModel implements IVehicle {
     type: VehicleType;
