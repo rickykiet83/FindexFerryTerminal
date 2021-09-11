@@ -2,18 +2,14 @@
     <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
         <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
             <button mat-raised-button color="secondary" (click)="getVehicle()">Get Vehicle</button>
-            <button mat-raised-button color="primary">Go</button>
         </div>
 
         <div fxLayoutGap="20px" fxFill fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="flex-evenly">
             <ng-container *ngFor="let f of ferries">
                 <div fxFlex>
-                    <app-ferry-card [title]="f.title" [vehicles]="f.GetVehicles()"></app-ferry-card>
+                    <app-ferry-card [ferry]="f" (startFerry)="ferryStart($event)"></app-ferry-card>
                 </div>
             </ng-container>
-            <div fxFlex *ngIf="waitingVehicleList.length > 0">
-                <app-ferry-card [title]="'Waiting Vehicle List'" [vehicles]="waitingVehicleList"></app-ferry-card>
-            </div>
         </div>
     </div>
 

@@ -15,7 +15,6 @@ export class FerryTerminalComponent implements OnInit {
 
     currentVehicle: VehicleModel;
     vehicles: VehicleModel[] = [];
-    waitingVehicleList: VehicleModel[] = [];
     ferries: FerryModel[] = [];
 
     constructor(
@@ -25,10 +24,7 @@ export class FerryTerminalComponent implements OnInit {
         this.ferries = this.ferryService.GetFerries();
     }
 
-    ngOnInit(): void {
-        console.log(this.ferries);
-
-    }
+    ngOnInit(): void { }
 
     public getVehicle() {
         this.currentVehicle = this.vehicleProvider.GetVehicle();
@@ -36,12 +32,11 @@ export class FerryTerminalComponent implements OnInit {
     }
 
     addVehicle(item: VehicleModel) {
-        const result = this.ferryService.AddVehicle(item);
-        if (!result) this.addVehicleToWaitingList(item);
+        this.ferryService.AddVehicle(item);
     }
 
-    addVehicleToWaitingList(item: VehicleModel) {
-        this.waitingVehicleList.push(item);
+    ferryStart(ferry: FerryModel) {
+        this.ferryService.FerryStart(ferry.size);
     }
 
     get smallFerry(): FerryModel {

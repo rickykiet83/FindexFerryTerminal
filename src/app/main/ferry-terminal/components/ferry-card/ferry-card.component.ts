@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { VehicleModel } from './../../../../shared/models/vehicle.model';
+import { FerryModel } from './../../../../shared/models/ferry.model';
 
 @Component({
     selector: 'app-ferry-card',
@@ -8,8 +8,8 @@ import { VehicleModel } from './../../../../shared/models/vehicle.model';
     styleUrls: ['./ferry-card.component.scss']
 })
 export class FerryCardComponent implements OnInit {
-    @Input() title: string = '';
-    @Input() vehicles: VehicleModel[] = [];
+    @Input() ferry: FerryModel;
+    @Output() startFerry: EventEmitter<FerryModel> = new EventEmitter();
 
     constructor() { }
 
@@ -17,7 +17,11 @@ export class FerryCardComponent implements OnInit {
     }
 
     get totalItem(): number {
-        return this.vehicles.length;
+        return this.ferry?.totalVehicle;
+    }
+
+    ferryStart() {
+        this.startFerry.emit(this.ferry);
     }
 
 }

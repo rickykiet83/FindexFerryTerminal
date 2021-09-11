@@ -1,21 +1,29 @@
 <mat-card>
-    <mat-card-header class="mb-8">
+    <mat-card-header class="mb-8" [class.full_background]="ferry.isFull">
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>
-            <span class="mat-headline">{{title}} - Total: {{totalItem}}</span>
+            <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
+                <div>
+                    <span class="mat-headline">{{ferry?.title}} - Total: {{totalItem}}</span>
+                    <span *ngIf="ferry.isFull"> - FULL</span>
+                </div>
+                <div>
+                    <button *ngIf="ferry.isFull" mat-raised-button color="primary" (click)="ferryStart()">Go</button>
+                </div>
+            </div>
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutAlign="flex-start">
-            <ng-container *ngFor="let item of vehicles">
+            <ng-container *ngFor="let item of ferry?.GetVehicles()">
                 <mat-card class="mb-20" fxFlex fxLayoutGap="20px">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title class="text-capitalized">
-                            {{item.typeName}}
+                            {{item?.typeName}}
                         </mat-card-title>
                         <mat-card-subtitle class="text-capitalized">
-                            {{item.categoryName}}
+                            {{item?.categoryName}}
                         </mat-card-subtitle>
                     </mat-card-header>
                     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"

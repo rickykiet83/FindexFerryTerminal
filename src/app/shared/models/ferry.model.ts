@@ -30,4 +30,8 @@ export class FerryModel implements IFerry {
     addVehicle(item: IVehicle) {
         this.vehicles.push(item);
     }
+
+    clearVehicle() {
+        this.vehicles = [];
+    }
 }

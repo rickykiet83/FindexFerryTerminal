@@ -10,7 +10,7 @@ import { VehicleSize } from '../enums/vehicle.enum';
 export class FerryService implements IFerryProvider {
 
     private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
-    private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.small);
+    private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
 
     private ferries: FerryModel[] = [];
 
@@ -19,23 +19,26 @@ export class FerryService implements IFerryProvider {
         this.ferries.push(this.largeFerry);
     }
 
+    FerryStart(size: FerrySize) {
+        if (size === FerrySize.small)
+            this.smallFerry.clearVehicle();
+        if (size === FerrySize.large)
+            this.largeFerry.clearVehicle();
+    }
+
     GetFerries(): FerryModel[] {
         return this.ferries;
     }
 
-    AddVehicle(item: IVehicle): boolean {
+    AddVehicle(item: IVehicle) {
         if (item.category === VehicleSize.small &&
             !this.smallFerry.isFull) {
             this.smallFerry.addVehicle(item);
-            return true;
         }
         if (item.category === VehicleSize.large &&
             !this.largeFerry.isFull) {
             this.largeFerry.addVehicle(item);
-            return true;
         }
-
-        return false;
     }
 
     GetFerry(size: FerrySize): FerryModel {

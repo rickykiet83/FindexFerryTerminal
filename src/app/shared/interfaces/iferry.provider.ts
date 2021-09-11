@@ -7,4 +7,5 @@ export interface IFerryProvider {
     GetFerry(size: FerrySize): FerryModel;
     AddVehicle(item: IVehicle);
     GetVehicles(size: FerrySize): VehicleModel[];
+    FerryStart(size: FerrySize);
 }
