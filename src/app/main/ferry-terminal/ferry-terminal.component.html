@@ -7,10 +7,10 @@
 
         <div fxLayoutGap="20px" fxFill fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="flex-evenly">
             <div fxFlex>
-                <app-ferry-card [title]="'Small Ferry'" [vehicles]="smallVehicles"></app-ferry-card>
+                <app-ferry-card [title]="'Small Ferry'" [vehicles]="vehiclesOnSmallFerry"></app-ferry-card>
             </div>
             <div fxFlex>
-                <app-ferry-card [title]="'Large Ferry'" [vehicles]="largeVehicles"></app-ferry-card>
+                <app-ferry-card [title]="'Large Ferry'" [vehicles]="vehiclesOnLargeFerry"></app-ferry-card>
             </div>
             <div fxFlex *ngIf="waitingVehicleList.length > 0">
                 <app-ferry-card [title]="'Waiting Vehicle List'" [vehicles]="waitingVehicleList"></app-ferry-card>

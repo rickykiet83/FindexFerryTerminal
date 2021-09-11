@@ -1,25 +1,30 @@
-import { FerryModel } from '../models/ferry.model';
+import { BaseFerryService } from './base-ferry.service';
 import { FerrySize } from './../enums/ferry.enum';
-import { IFerryProvider } from './../interfaces/iferry.provider';
+import { IVehicle } from '../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
+import { LargeFerryService } from './large-ferry.service';
+import { SmallFerryService } from './small-ferry.service';
+import { VehicleModel } from '../models/vehicle.model';
+import { VehicleSize } from '../enums/vehicle.enum';
 
 @Injectable()
-export class FerryService implements IFerryProvider {
-    private ferries: FerryModel[] = [];
-
-    constructor() {
-        this.initFerries();
+export class FerryService extends BaseFerryService {
+    constructor(public smallFerryService: SmallFerryService,
+        public largeFerryService: LargeFerryService) {
+        super();
     }
 
-    GetFerries(): FerryModel[] {
-        return this.ferries;
+    AddVehicle(item: IVehicle) {
+        if (item.category === VehicleSize.small) {
+            this.smallFerryService.AddVehicle(item);
+        }
+        if (item.category === VehicleSize.large) {
+            this.largeFerryService.AddVehicle(item);
+        }
     }
 
-    private initFerries() {
-        const smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
-        const largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
-        this.ferries.push(smallFerry);
-        this.ferries.push(largeFerry);
+    GetVehicles(size: FerrySize): VehicleModel[] {
+        if (size === FerrySize.small) return this.smallFerryService.GetVehicles();
+        if (size === FerrySize.large) return this.largeFerryService.GetVehicles();
     }
-
 }

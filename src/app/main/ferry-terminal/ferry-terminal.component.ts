@@ -1,3 +1,7 @@
+import { FerryService } from 'app/shared/services/ferry.service';
+import { LargeFerryService } from './../../shared/services/large-ferry.service';
+import { SmallFerryService } from './../../shared/services/small-ferry.service';
+import { BaseFerryService } from '../../shared/services/base-ferry.service';
 import { FerryModel } from './../../shared/models/ferry.model';
 import { FERRY_PROVIDER, IFerryProvider } from './../../shared/interfaces/iferry.provider';
 import { SystemConstants } from './../../common/system.constants';
@@ -21,9 +25,8 @@ export class FerryTerminalComponent implements OnInit {
 
     constructor(
         @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider,
-        @Inject(FERRY_PROVIDER) private ferryProvider: IFerryProvider,
+        private ferryService: FerryService
     ) {
-        this.ferries = ferryProvider.GetFerries();
     }
 
     ngOnInit(): void {
@@ -47,22 +50,19 @@ export class FerryTerminalComponent implements OnInit {
     }
 
     addVehicle(item: VehicleModel) {
-        this.vehicles.push(item);
+        this.ferryService.AddVehicle(item);
     }
 
     addVehicleToWaitingList(item: VehicleModel) {
         this.waitingVehicleList.push(item);
     }
 
-    get smallVehicles(): VehicleModel[] {
-        return this.getVehicles(VehicleSize.small);
+    get vehiclesOnSmallFerry(): VehicleModel[] {
+        return this.ferryService.smallFerryService.GetVehicles();
     }
 
-    get largeVehicles(): VehicleModel[] {
-        return this.getVehicles(VehicleSize.large);
+    get vehiclesOnLargeFerry(): VehicleModel[] {
+        return this.ferryService.largeFerryService.GetVehicles();
     }
 
-    private getVehicles(size: VehicleSize): VehicleModel[] {
-        return this.vehicles.filter(v => v.category === size);
-    }
 }
