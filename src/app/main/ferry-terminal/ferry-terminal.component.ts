@@ -1,3 +1,5 @@
+import { FerryModel } from './../../shared/models/ferry.model';
+import { FERRY_PROVIDER, IFerryProvider } from './../../shared/interfaces/iferry.provider';
 import { SystemConstants } from './../../common/system.constants';
 import { VehicleSize } from './../../shared/enums/vehicle.enum';
 import { VehicleModel } from './../../shared/models/vehicle.model';
@@ -15,13 +17,16 @@ export class FerryTerminalComponent implements OnInit {
     vehicles: VehicleModel[] = [];
     waitingVehicleList: VehicleModel[] = [];
     size = VehicleSize;
+    ferries: FerryModel[] = [];
 
     constructor(
-        @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider
-    ) { }
+        @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider,
+        @Inject(FERRY_PROVIDER) private ferryProvider: IFerryProvider,
+    ) {
+        this.ferries = ferryProvider.GetFerries();
+    }
 
     ngOnInit(): void {
-
     }
 
     public getVehicle() {

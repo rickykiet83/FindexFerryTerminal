@@ -1,4 +1,6 @@
+import { FERRY_PROVIDER } from './../../shared/interfaces/iferry.provider';
 import { FerryCardComponent } from './components/ferry-card/ferry-card.component';
+import { FerryService } from './../../shared/services/ferry.service';
 import { FerryTerminalComponent } from './ferry-terminal.component';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,7 +30,10 @@ const routes = [
         MatIconModule,
         MatCardModule
     ],
-    providers: [{ provide: VEHICLE_PROVIDER, useClass: VehicleService }],
+    providers: [
+        { provide: VEHICLE_PROVIDER, useClass: VehicleService },
+        { provide: FERRY_PROVIDER, useClass: FerryService },
+    ],
 
 })
 export class FerryTerminalModule { }

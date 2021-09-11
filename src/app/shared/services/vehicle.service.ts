@@ -4,9 +4,7 @@ import { IVehicleProvider } from './../../shared/interfaces/ivehicle.provider';
 import { Injectable } from '@angular/core';
 import { VehicleModel } from '../models/vehicle.model';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class VehicleService implements IVehicleProvider {
 
     constructor() { }
