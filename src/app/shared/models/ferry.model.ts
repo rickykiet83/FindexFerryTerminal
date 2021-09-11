@@ -4,12 +4,10 @@ import { IVehicle } from '../interfaces/vehicle.interface';
 import { VehicleModel } from './vehicle.model';
 
 export class FerryModel implements IFerry {
-    title: string;
-    capacity: number;
-    size: FerrySize;
     protected vehicles: IVehicle[] = [];
 
-    constructor(title: string, capacity: number, size: FerrySize) {
+    constructor(public id: number, public title: string, public capacity: number, public size: FerrySize) {
+        this.id = id;
         this.title = title;
         this.capacity = capacity;
         this.size = size;
@@ -31,7 +29,7 @@ export class FerryModel implements IFerry {
         this.vehicles.push(item);
     }
 
-    clearVehicle() {
+    Go() {
         this.vehicles = [];
     }
 }

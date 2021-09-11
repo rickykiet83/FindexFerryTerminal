@@ -9,8 +9,8 @@ import { VehicleSize } from '../enums/vehicle.enum';
 @Injectable()
 export class FerryService implements IFerryProvider {
 
-    private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
-    private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
+    private smallFerry = new FerryModel(1, 'Small Ferry', 8, FerrySize.small);
+    private largeFerry = new FerryModel(2, 'Large Ferry', 6, FerrySize.large);
 
     private ferries: FerryModel[] = [];
 
@@ -19,11 +19,8 @@ export class FerryService implements IFerryProvider {
         this.ferries.push(this.largeFerry);
     }
 
-    FerryStart(size: FerrySize) {
-        if (size === FerrySize.small)
-            this.smallFerry.clearVehicle();
-        if (size === FerrySize.large)
-            this.largeFerry.clearVehicle();
+    FerryStart(id: number) {
+        this.GetFerry(id).Go();
     }
 
     GetFerries(): FerryModel[] {
@@ -31,23 +28,32 @@ export class FerryService implements IFerryProvider {
     }
 
     AddVehicle(item: IVehicle) {
-        if (item.category === VehicleSize.small &&
-            !this.smallFerry.isFull) {
-            this.smallFerry.addVehicle(item);
-        }
-        if (item.category === VehicleSize.large &&
-            !this.largeFerry.isFull) {
-            this.largeFerry.addVehicle(item);
+        let ferryAvail: FerryModel;
+        switch (item.category) {
+
+            case VehicleSize.small:
+                ferryAvail = this.ferries.find(f => f.size === FerrySize.small &&
+                    !f.isFull);
+                if (ferryAvail) {
+                    this.GetFerry(ferryAvail.id).addVehicle(item);
+                }
+                break;
+
+            case VehicleSize.large:
+                ferryAvail = this.ferries.find(f => f.size === FerrySize.large &&
+                    !f.isFull);
+                if (ferryAvail) {
+                    this.GetFerry(ferryAvail.id).addVehicle(item);
+                }
+                break;
         }
     }
 
-    GetFerry(size: FerrySize): FerryModel {
-        if (size === FerrySize.small) return this.smallFerry;
-        if (size === FerrySize.large) return this.largeFerry;
+    GetFerry(id: number): FerryModel {
+        return this.ferries.find(f => f.id === id);
     }
 
-    GetVehicles(size: FerrySize): VehicleModel[] {
-        if (size === FerrySize.small) return this.smallFerry.GetVehicles();
-        if (size === FerrySize.large) return this.largeFerry.GetVehicles();
+    GetVehicles(id: number): VehicleModel[] {
+        return this.GetFerry(id).GetVehicles();
     }
 }

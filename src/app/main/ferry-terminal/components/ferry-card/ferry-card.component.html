@@ -5,7 +5,7 @@
             <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
                 <div>
                     <span class="mat-headline">{{ferry?.title}} - Total: {{totalItem}}</span>
-                    <span *ngIf="ferry.isFull"> - FULL</span>
+                    <span class="text-semibold" *ngIf="ferry.isFull"> - FULL</span>
                 </div>
                 <div>
                     <button *ngIf="ferry.isFull" mat-raised-button color="primary" (click)="ferryStart()">Go</button>
@@ -26,10 +26,9 @@
                             {{item?.categoryName}}
                         </mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                        alt="Photo of a Shiba Inu">
-                    <mat-card-content>
 
+                    <mat-card-content>
+                        <p><span class="text-capitalized">{{item.typeName}}</span></p>
                     </mat-card-content>
                     <mat-card-actions>
 

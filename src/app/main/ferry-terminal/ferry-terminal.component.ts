@@ -36,14 +36,6 @@ export class FerryTerminalComponent implements OnInit {
     }
 
     ferryStart(ferry: FerryModel) {
-        this.ferryService.FerryStart(ferry.size);
-    }
-
-    get smallFerry(): FerryModel {
-        return this.ferryService.GetFerry(FerrySize.small);
-    }
-
-    get largeFerry(): FerryModel {
-        return this.ferryService.GetFerry(FerrySize.large);
+        this.ferryService.FerryStart(ferry.id);
     }
 }
