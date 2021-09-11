@@ -1,6 +1,7 @@
 import { FerrySize } from './../enums/ferry.enum';
 import { IFerry } from './../interfaces/ferry.interface';
 import { IVehicle } from '../interfaces/vehicle.interface';
+import { VehicleModel } from './vehicle.model';
 
 export class FerryModel implements IFerry {
     title: string;
@@ -14,8 +15,12 @@ export class FerryModel implements IFerry {
         this.size = size;
     }
 
-    getVehicles(): IVehicle[] {
-        return this.vehicles;
+    GetVehicles(): VehicleModel[] {
+        return this.vehicles.map(v => new VehicleModel(v.type, v.category));
+    }
+
+    get totalVehicle(): number {
+        return this.vehicles.length;
     }
 
     addVehicle(item: IVehicle) {

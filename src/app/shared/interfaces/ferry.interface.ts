@@ -1,6 +1,8 @@
-import { IVehicle } from './vehicle.interface';
+import { FerrySize } from '../enums/ferry.enum';
+import { VehicleModel } from './../models/vehicle.model';
 export interface IFerry {
     title: string;
     capacity: number;
-    getVehicles(): IVehicle[];
+    size: FerrySize;
+    GetVehicles(): VehicleModel[];
 }

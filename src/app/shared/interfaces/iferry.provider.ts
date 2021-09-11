@@ -1,11 +1,10 @@
+import { FerryModel } from '../models/ferry.model';
 import { FerrySize } from '../enums/ferry.enum';
 import { IVehicle } from './vehicle.interface';
-import { InjectionToken } from "@angular/core";
 import { VehicleModel } from '../models/vehicle.model';
 
-export const FERRY_PROVIDER = new InjectionToken("IFerryProvider");
-
 export interface IFerryProvider {
+    GetFerry(size: FerrySize): FerryModel;
     AddVehicle(item: IVehicle);
     GetVehicles(size: FerrySize): VehicleModel[];
 }

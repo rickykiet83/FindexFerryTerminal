@@ -1,10 +1,6 @@
+import { FerrySize } from './../../shared/enums/ferry.enum';
 import { FerryService } from 'app/shared/services/ferry.service';
-import { LargeFerryService } from './../../shared/services/large-ferry.service';
-import { SmallFerryService } from './../../shared/services/small-ferry.service';
-import { BaseFerryService } from '../../shared/services/base-ferry.service';
 import { FerryModel } from './../../shared/models/ferry.model';
-import { FERRY_PROVIDER, IFerryProvider } from './../../shared/interfaces/iferry.provider';
-import { SystemConstants } from './../../common/system.constants';
 import { VehicleSize } from './../../shared/enums/vehicle.enum';
 import { VehicleModel } from './../../shared/models/vehicle.model';
 import { IVehicleProvider, VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
@@ -20,33 +16,19 @@ export class FerryTerminalComponent implements OnInit {
     currentVehicle: VehicleModel;
     vehicles: VehicleModel[] = [];
     waitingVehicleList: VehicleModel[] = [];
-    size = VehicleSize;
-    ferries: FerryModel[] = [];
 
     constructor(
         @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider,
-        private ferryService: FerryService
+        public ferryService: FerryService
     ) {
+
     }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void { }
 
     public getVehicle() {
         this.currentVehicle = this.vehicleProvider.GetVehicle();
-
-        if (this.canItemOnFerryBoard(this.currentVehicle)) {
-            this.addVehicle(this.currentVehicle);
-        } else {
-            this.addVehicleToWaitingList(this.currentVehicle);
-        }
-    }
-
-    canItemOnFerryBoard(vehicle: VehicleModel): boolean {
-        const limit = vehicle.category === VehicleSize.small ? SystemConstants.TOTAL_ITEM_ON_SMALL_FERRY : SystemConstants.TOTAL_ITEM_ON_LARGE_FERRY;
-        const totalItemOnFerry = this.vehicles.filter(v => v.category === vehicle.category).length;
-
-        return totalItemOnFerry < limit;
+        this.addVehicle(this.currentVehicle);
     }
 
     addVehicle(item: VehicleModel) {
@@ -58,12 +40,11 @@ export class FerryTerminalComponent implements OnInit {
         this.waitingVehicleList.push(item);
     }
 
-    get vehiclesOnSmallFerry(): VehicleModel[] {
-        return this.ferryService.smallFerryService.GetVehicles();
+    get smallFerry(): FerryModel {
+        return this.ferryService.GetFerry(FerrySize.small);
     }
 
-    get vehiclesOnLargeFerry(): VehicleModel[] {
-        return this.ferryService.largeFerryService.GetVehicles();
+    get largeFerry(): FerryModel {
+        return this.ferryService.GetFerry(FerrySize.large);
     }
-
 }
