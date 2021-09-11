@@ -1,13 +1,13 @@
 import { FerryModel } from '../models/ferry.model';
 import { FerrySize } from '../enums/ferry.enum';
-import { ITerminal } from './../interfaces/terminal.interface';
+import { ITerminalProvider } from './../interfaces/terminal.interface';
 import { IVehicle } from './../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
 import { TicketModel } from '../models/ticket.model';
 import { VehicleModel } from '../models/vehicle.model';
 
 @Injectable()
-export abstract class TerminalService implements ITerminal {
+export abstract class TerminalService implements ITerminalProvider {
 
     private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
     private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
@@ -70,7 +70,7 @@ export abstract class TerminalService implements ITerminal {
         return this.ferries.length;
     }
 
-    protected GetFerriesBySize(size: FerrySize): FerryModel[] {
+    GetFerriesBySize(size: FerrySize): FerryModel[] {
         return this.GetFerries().filter(f => f.size === size);
     }
 

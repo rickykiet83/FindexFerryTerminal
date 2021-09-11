@@ -1,16 +1,12 @@
-import * as shortId from 'shortid';
-
+import { BaseModel } from './base.model';
 import { ITicket } from './../interfaces/ticket.interface';
 import { VehicleType } from '../enums/vehicle.enum';
-export class TicketModel implements ITicket {
-    vehicleType: VehicleType;
-    private _id: string = shortId.generate();
-    constructor(type: VehicleType) {
-        this.vehicleType = type;
-    }
 
-    get id(): string {
-        return this._id;
+export class TicketModel extends BaseModel implements ITicket {
+    vehicleType: VehicleType;
+    constructor(type: VehicleType) {
+        super();
+        this.vehicleType = type;
     }
 
     get cost(): number {

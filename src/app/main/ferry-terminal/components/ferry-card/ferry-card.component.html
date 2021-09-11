@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card id={{ferry.id}}>
     <mat-card-header class="mb-8" [class.full_background]="ferry.isFull">
         <mat-card-title>
             <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
@@ -15,9 +15,8 @@
     <mat-card-content>
         <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutAlign="flex-start">
             <ng-container *ngFor="let item of ferry?.GetVehicles()">
-                <mat-card class="mb-20" fxFlex fxLayoutGap="20px">
+                <mat-card class="mb-20" fxFlex fxLayoutGap="20px" id={{item.id}}>
                     <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title class="text-capitalized">
                             {{item?.typeName}}
                         </mat-card-title>
