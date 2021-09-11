@@ -9,8 +9,8 @@ import { VehicleSize } from '../enums/vehicle.enum';
 @Injectable()
 export class FerryService implements IFerryProvider {
 
-    private smallFerry = new FerryModel(1, 'Small Ferry', 8, FerrySize.small);
-    private largeFerry = new FerryModel(2, 'Large Ferry', 6, FerrySize.large);
+    private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
+    private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
 
     private ferries: FerryModel[] = [];
 
@@ -19,7 +19,7 @@ export class FerryService implements IFerryProvider {
         this.ferries.push(this.largeFerry);
     }
 
-    FerryStart(id: number) {
+    FerryStart(id: string | number) {
         this.GetFerry(id).Go();
     }
 
@@ -49,11 +49,11 @@ export class FerryService implements IFerryProvider {
         }
     }
 
-    GetFerry(id: number): FerryModel {
+    GetFerry(id: number | string): FerryModel {
         return this.ferries.find(f => f.id === id);
     }
 
-    GetVehicles(id: number): VehicleModel[] {
+    GetVehicles(id: number | string): VehicleModel[] {
         return this.GetFerry(id).GetVehicles();
     }
 }

@@ -1,3 +1,5 @@
+import * as shortId from 'shortid';
+
 import { FerrySize } from './../enums/ferry.enum';
 import { IFerry } from './../interfaces/ferry.interface';
 import { IVehicle } from '../interfaces/vehicle.interface';
@@ -5,12 +7,15 @@ import { VehicleModel } from './vehicle.model';
 
 export class FerryModel implements IFerry {
     protected vehicles: IVehicle[] = [];
-
-    constructor(public id: number, public title: string, public capacity: number, public size: FerrySize) {
-        this.id = id;
+    private _id: string = shortId.generate();
+    constructor(public title: string, public capacity: number, public size: FerrySize) {
         this.title = title;
         this.capacity = capacity;
         this.size = size;
+    }
+
+    get id(): string {
+        return this._id;
     }
 
     GetVehicles(): VehicleModel[] {
