@@ -14,13 +14,14 @@ export class FerryService extends BaseFerryService {
         super();
     }
 
-    AddVehicle(item: IVehicle) {
+    AddVehicle(item: IVehicle): boolean {
         if (item.category === VehicleSize.small) {
-            this.smallFerryService.AddVehicle(item);
+            return this.smallFerryService.AddVehicle(item);
         }
         if (item.category === VehicleSize.large) {
-            this.largeFerryService.AddVehicle(item);
+            return this.largeFerryService.AddVehicle(item);
         }
+        return false;
     }
 
     GetVehicles(size: FerrySize): VehicleModel[] {

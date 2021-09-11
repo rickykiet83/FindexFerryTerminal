@@ -50,7 +50,8 @@ export class FerryTerminalComponent implements OnInit {
     }
 
     addVehicle(item: VehicleModel) {
-        this.ferryService.AddVehicle(item);
+        const result = this.ferryService.AddVehicle(item);
+        if (!result) this.addVehicleToWaitingList(item);
     }
 
     addVehicleToWaitingList(item: VehicleModel) {
