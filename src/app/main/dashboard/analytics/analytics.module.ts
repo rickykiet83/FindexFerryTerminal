@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AgmCoreModule } from '@agm/core';
 import { AnalyticsComponent } from './analytics.component';
+import { AnalyticsService } from './analytics.service';
 import { ChartsModule } from 'ng2-charts';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
@@ -18,9 +19,9 @@ const routes: Routes = [
     {
         path: '**',
         component: AnalyticsComponent,
-        // resolve: {
-        //     data: AnalyticsComponent
-        // }
+        resolve: {
+            data: AnalyticsService
+        }
     }
 ];
 
@@ -46,6 +47,9 @@ const routes: Routes = [
         FuseSharedModule,
         FuseWidgetModule
 
+    ],
+    providers: [
+        AnalyticsService
     ]
 })
 export class AnalyticsModule { }
