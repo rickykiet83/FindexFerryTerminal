@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TerminalService } from './../../shared/services/terminal.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
 import { VehicleService } from './../../shared/services/vehicle.service';
@@ -30,7 +31,7 @@ const routes = [
         MatCardModule
     ],
     providers: [
-        FerryService,
+        FerryService, TerminalService,
         { provide: VEHICLE_PROVIDER, useClass: VehicleService },
     ],
 
