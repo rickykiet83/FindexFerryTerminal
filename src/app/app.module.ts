@@ -23,10 +23,6 @@ const appRoutes: Routes = [
         loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)
     },
     {
-        path: 'dashboard',
-        loadChildren: () => import('./main/dashboard/analytics/analytics.module').then(m => m.AnalyticsModule)
-    },
-    {
         path: 'ferry-terminal',
         loadChildren: () => import('./main/ferry-terminal/ferry-terminal.module').then(m => m.FerryTerminalModule)
     },

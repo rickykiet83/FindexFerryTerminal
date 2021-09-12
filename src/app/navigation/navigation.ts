@@ -16,14 +16,6 @@ export const navigation: FuseNavigation[] = [
                 url: '/home',
             },
             {
-                id: 'dashboard',
-                title: 'Dashboard',
-                translate: 'NAV.HOME.TITLE',
-                type: 'item',
-                icon: 'home',
-                url: '/dashboard',
-            },
-            {
                 id: 'ferry_terminal',
                 title: 'Ferry Terminal',
                 translate: 'NAV.FERRY_TERMINAL.TITLE',

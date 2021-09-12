@@ -31,5 +31,4 @@ export class SaleWidgetComponent implements OnInit {
     get totalTicket(): number {
         return this.ferryService.totalTicket;
     }
-
 }

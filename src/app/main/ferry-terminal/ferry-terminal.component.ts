@@ -1,5 +1,3 @@
-import { TicketModel } from './../../shared/models/ticket.model';
-import { Observable } from 'rxjs';
 import { FerryService } from 'app/shared/services/ferry.service';
 import { FerryModel } from './../../shared/models/ferry.model';
 import { VehicleModel } from './../../shared/models/vehicle.model';

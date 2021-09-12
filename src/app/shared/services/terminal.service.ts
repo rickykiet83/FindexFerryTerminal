@@ -1,13 +1,16 @@
+import { BehaviorSubject, Subject } from 'rxjs';
+
 import { FerryModel } from '../models/ferry.model';
 import { FerrySize } from '../enums/ferry.enum';
 import { ITerminalProvider } from './../interfaces/terminal.interface';
 import { IVehicle } from './../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { TicketModel } from '../models/ticket.model';
 import { VehicleModel } from '../models/vehicle.model';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class TerminalService implements ITerminalProvider {
 
     private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
@@ -19,7 +22,7 @@ export class TerminalService implements ITerminalProvider {
     private terminalWorkerBonus = 0.1;
     private terminalBonus = 0.9;
 
-    onTicketsChanged: Subject<TicketModel[]> = new Subject();
+    onTicketsChanged: BehaviorSubject<TicketModel[]> = new BehaviorSubject(this.tickets);
 
     constructor() {
         this.initFerries();

@@ -32,7 +32,7 @@ const routes = [
         MatCardModule
     ],
     providers: [
-        FerryService, TerminalService,
+        FerryService,
         { provide: VEHICLE_PROVIDER, useClass: VehicleService },
     ],
 
