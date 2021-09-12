@@ -20,6 +20,7 @@ const routes = [
         TranslateModule,
 
         FuseSharedModule
-    ]
+    ],
+    providers: []
 })
 export class HomeModule { }

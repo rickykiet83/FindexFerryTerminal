@@ -1,14 +1,13 @@
 <mat-card id={{ferry.id}}>
-    <mat-card-header class="mb-8" [class.full_background]="ferry.isFull">
-        <mat-card-title>
-            <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
-                <div>
-                    <span class="mat-headline">{{ferry?.title}} - Total: {{totalItem}}</span>
-                    <span class="text-semibold" *ngIf="ferry.isFull"> - FULL</span>
-                </div>
-                <div>
-                    <button *ngIf="totalItem > 0" mat-raised-button color="primary" (click)="ferryStart()">Go</button>
-                </div>
+    <mat-card-header class="mb-8" [class.full_background]="ferry.isFull" fxLayout="column" fxLayoutGap="20px"
+        fxLayoutAlign="center center">
+        <mat-card-title fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
+            <div>
+                <span class="mat-headline">{{ferry?.title}} - Total: {{totalItem}}</span>
+                <span class="text-semibold" *ngIf="ferry.isFull"> - FULL</span>
+            </div>
+            <div>
+                <button *ngIf="totalItem > 0" mat-raised-button color="primary" (click)="ferryStart()">Go</button>
             </div>
         </mat-card-title>
     </mat-card-header>

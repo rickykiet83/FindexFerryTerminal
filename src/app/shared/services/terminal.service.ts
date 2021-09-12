@@ -1,5 +1,3 @@
-import { BehaviorSubject, Subject } from 'rxjs';
-
 import { FerryModel } from '../models/ferry.model';
 import { FerrySize } from '../enums/ferry.enum';
 import { ITerminalProvider } from './../interfaces/terminal.interface';
@@ -18,8 +16,6 @@ export class TerminalService implements ITerminalProvider {
     private terminalWorkerBonus = 0.1;
     private terminalBonus = 0.9;
 
-    onTicketsChanged: BehaviorSubject<TicketModel[]> = new BehaviorSubject(this.tickets);
-
     constructor() {
         this.initFerries();
     }
@@ -37,11 +33,9 @@ export class TerminalService implements ITerminalProvider {
         return this.ferries;
     }
 
-
     GenerateTicket(item: IVehicle) {
         const ticket = new TicketModel(item.type);
         this.tickets.push(ticket);
-        this.onTicketsChanged.next(this.tickets);
     }
 
     get totalFerry(): number {
@@ -59,7 +53,6 @@ export class TerminalService implements ITerminalProvider {
     get isAllFerryFull(): boolean {
         return this.ferries.filter(f => f.isFull).length === this.totalFerry;
     }
-
 
     get workerProfit(): number {
         if (this.GetTickets().length > 0) {
