@@ -9,9 +9,7 @@ export interface ITerminalProvider {
     GetTickets(): TicketModel[];
     AddVehicle(item: IVehicle);
     GetVehicles(): VehicleModel[];
-    terminalWorkerProfit: number;
-    terminalProfit: number;
     totalFerry: number;
-    isAllFull: boolean;
+    isAllFerryFull: boolean;
     GetFerriesBySize(size: FerrySize): FerryModel[];
 }

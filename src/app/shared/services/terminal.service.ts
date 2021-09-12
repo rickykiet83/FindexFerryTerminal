@@ -7,7 +7,7 @@ import { TicketModel } from '../models/ticket.model';
 import { VehicleModel } from '../models/vehicle.model';
 
 @Injectable()
-export abstract class TerminalService implements ITerminalProvider {
+export class TerminalService implements ITerminalProvider {
 
     private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
     private largeFerry = new FerryModel('Large Ferry', 6, FerrySize.large);
@@ -74,7 +74,7 @@ export abstract class TerminalService implements ITerminalProvider {
         return this.GetFerries().filter(f => f.size === size);
     }
 
-    get isAllFull(): boolean {
+    get isAllFerryFull(): boolean {
         return this.ferries.filter(f => f.isFull).length === this.totalFerry;
     }
 }

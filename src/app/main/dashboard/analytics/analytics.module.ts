@@ -4,6 +4,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AnalyticsComponent } from './analytics.component';
 import { AnalyticsService } from './analytics.service';
 import { ChartsModule } from 'ng2-charts';
+import { FerryService } from 'app/shared/services/ferry.service';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,14 +15,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TerminalService } from './../../../shared/services/terminal.service';
 
 const routes: Routes = [
     {
         path: '**',
         component: AnalyticsComponent,
-        resolve: {
-            data: AnalyticsService
-        }
     }
 ];
 
@@ -49,7 +48,8 @@ const routes: Routes = [
 
     ],
     providers: [
-        AnalyticsService
+        AnalyticsService,
+        FerryService
     ]
 })
 export class AnalyticsModule { }
