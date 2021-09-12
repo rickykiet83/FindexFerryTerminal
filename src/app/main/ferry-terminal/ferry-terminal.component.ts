@@ -1,3 +1,5 @@
+import { TicketModel } from './../../shared/models/ticket.model';
+import { Observable } from 'rxjs';
 import { FerryService } from 'app/shared/services/ferry.service';
 import { FerryModel } from './../../shared/models/ferry.model';
 import { VehicleModel } from './../../shared/models/vehicle.model';
@@ -41,5 +43,17 @@ export class FerryTerminalComponent implements OnInit {
 
     get isAllFull() {
         return this.ferryService.isAllFerryFull;
+    }
+
+    get terminalProfit(): number {
+        return this.ferryService.terminalProfit;
+    }
+
+    get workerProfit(): number {
+        return this.ferryService.workerProfit;
+    }
+
+    get sumOfSales(): number {
+        return this.ferryService.sumOfSales;
     }
 }
