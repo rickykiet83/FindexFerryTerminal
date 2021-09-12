@@ -6,6 +6,7 @@ import { FerryModel } from './../../shared/models/ferry.model';
 import { FerryService } from 'app/shared/services/ferry.service';
 import { FerrySize } from './../../shared/enums/ferry.enum';
 import { FerryTerminalComponent } from './ferry-terminal.component';
+import { TerminalService } from './../../shared/services/terminal.service';
 import { VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
 import { VehicleService } from './../../shared/services/vehicle.service';
 
@@ -21,11 +22,13 @@ describe('FerryTerminalComponent', () => {
     ];
 
     beforeEach(async () => {
-        const ferryServiceSpy = jasmine.createSpyObj('FerryService', ['GetFerries'])
+        const ferryServiceSpy = jasmine.createSpyObj('FerryService', ['AddVehicle', 'FerryStart'])
+        const terminalServiceSpy = jasmine.createSpyObj('TerminalService', ['GetFerries'])
         await TestBed.configureTestingModule({
             declarations: [FerryTerminalComponent],
             providers: [
 
+                { provide: TerminalService, useValue: terminalServiceSpy },
                 { provide: FerryService, useValue: ferryServiceSpy },
                 { provide: VEHICLE_PROVIDER, useClass: VehicleService },
             ]
