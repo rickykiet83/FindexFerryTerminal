@@ -12,7 +12,8 @@
             </div>
 
             <div class="p-16 pt-8" fxLayout="row" fxLayoutAlign="space-between end">
-                <div class="font-size-48 font-weight-300 line-height-1">{{sumOfSales | currency: 'AUD'}}
+                <div id="sum-of-sale" class="font-size-48 font-weight-300 line-height-1">
+                    {{sumOfSales | currency: 'AUD'}}
                 </div>
             </div>
 
@@ -23,13 +24,13 @@
             <div class="px-16" fxLayout="column" fxLayoutAlign="start center">
 
                 <div class="h4 secondary-text">Terminal Profit</div>
-                <div class="h2 font-weight-300 py-8">{{terminalProfit}}</div>
+                <div id="terminal-profit" class="h2 font-weight-300 py-8">{{terminalProfit | currency: 'AUD'}}</div>
 
             </div>
             <div class="px-16" fxLayout="column" fxLayoutAlign="start center">
 
                 <div class="h4 secondary-text">Worker Profit</div>
-                <div class="h2 font-weight-300 py-8">{{workerProfit}}</div>
+                <div id="worker-profit" class="h2 font-weight-300 py-8">{{workerProfit | currency: 'AUD'}}</div>
 
             </div>
             <div class="px-16" fxLayout="column" fxLayoutAlign="start center">

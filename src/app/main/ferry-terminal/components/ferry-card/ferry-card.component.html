@@ -11,7 +11,7 @@
             </div>
         </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="ferry-content">
         <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutAlign="flex-start">
             <ng-container *ngFor="let item of ferry?.GetVehicles()">
                 <mat-card class="mb-20" fxFlex fxLayoutGap="20px" id={{item.id}}>

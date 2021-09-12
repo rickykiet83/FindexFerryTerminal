@@ -24,11 +24,13 @@ export class FerryService implements IFerryProvider {
         switch (item.category) {
 
             case VehicleSize.small:
-                ferryAvail = this.terminalService.GetFerriesBySize(FerrySize.small).filter(f => !f.isFull)[0];
+                ferryAvail = this.terminalService.GetFerriesBySize(FerrySize.small)
+                    .filter(f => !f.isFull)[0];
                 break;
 
             case VehicleSize.large:
-                ferryAvail = this.terminalService.GetFerriesBySize(FerrySize.large).filter(f => !f.isFull)[0];
+                ferryAvail = this.terminalService.GetFerriesBySize(FerrySize.large)
+                    .filter(f => !f.isFull)[0];
                 break;
         }
 
