@@ -26,13 +26,9 @@ export class FerryTerminalComponent implements OnInit {
     }
 
     public getVehicle() {
-        if (this.ferryService.isAllFerryFull) return;
+        if (this.isAllFull) return;
         this.currentVehicle = this.vehicleProvider.GetVehicle();
-        this.addVehicle(this.currentVehicle);
-    }
-
-    addVehicle(item: VehicleModel) {
-        this.ferryService.AddVehicle(item);
+        this.ferryService.AddVehicle(this.currentVehicle);
     }
 
     ferryStart(ferry: FerryModel) {
