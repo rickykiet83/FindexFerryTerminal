@@ -7,12 +7,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SaleWidgetComponent } from './components/widgets/sale-widget/sale-widget.component';
 import { TerminalService } from './../../shared/services/terminal.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
 import { VehicleService } from './../../shared/services/vehicle.service';
-import { SaleWidgetComponent } from './components/widgets/sale-widget/sale-widget.component';
-import { VehicleWidgetComponent } from './components/widgets/vehicle-widget/vehicle-widget.component';
 const routes = [
     {
         path: '',
@@ -21,7 +20,7 @@ const routes = [
 ];
 
 @NgModule({
-    declarations: [FerryTerminalComponent, FerryCardComponent, SaleWidgetComponent, VehicleWidgetComponent],
+    declarations: [FerryTerminalComponent, FerryCardComponent, SaleWidgetComponent],
     imports: [
         RouterModule.forChild(routes),
 
