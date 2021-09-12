@@ -57,6 +57,10 @@ export class TerminalService implements ITerminalProvider {
         return this.ferries.length;
     }
 
+    get totalTicket(): number {
+        return this.tickets.length;
+    }
+
     GetFerriesBySize(size: FerrySize): FerryModel[] {
         return this.GetFerries().filter(f => f.size === size);
     }

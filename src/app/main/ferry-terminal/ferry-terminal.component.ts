@@ -44,16 +44,4 @@ export class FerryTerminalComponent implements OnInit {
     get isAllFull() {
         return this.ferryService.isAllFerryFull;
     }
-
-    get terminalProfit(): number {
-        return this.ferryService.terminalProfit;
-    }
-
-    get workerProfit(): number {
-        return this.ferryService.workerProfit;
-    }
-
-    get sumOfSales(): number {
-        return this.ferryService.sumOfSales;
-    }
 }

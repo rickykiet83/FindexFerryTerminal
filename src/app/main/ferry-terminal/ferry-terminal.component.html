@@ -6,51 +6,7 @@
         </div>
 
         <div fxLayout="row wrap" fxLayoutGap="20px" fxLayout.lt-md="column">
-            <div class="mb-48" [ngClass.lt-lg]="'mr-32'" [ngClass.xs]="'mr-0'">
-
-                <div class="pb-24 font-size-18 font-weight-300">
-                    How are your sales?
-                </div>
-
-                <div class="fuse-card">
-
-                    <div class="light-blue-600">
-
-                        <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
-                            <div class="pr-16">
-                                <div class="h1 font-weight-300">Sales</div>
-                                <div class="h5 secondary-text">Daily sum of your sales</div>
-                            </div>
-                        </div>
-
-                        <div class="p-16 pt-8" fxLayout="row" fxLayoutAlign="space-between end">
-                            <div class="font-size-48 font-weight-300 line-height-1">{{sumOfSales | currency: 'AUD'}}
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="p-16" fxLayout="row" fxLayoutAlign="center center">
-
-                        <div class="px-16" fxLayout="column" fxLayoutAlign="start center">
-
-                            <div class="h4 secondary-text">Terminal Profit</div>
-                            <div class="h2 font-weight-300 py-8">{{terminalProfit}}</div>
-
-                        </div>
-                        <div class="px-16" fxLayout="column" fxLayoutAlign="start center">
-
-                            <div class="h4 secondary-text">Worker Profit</div>
-                            <div class="h2 font-weight-300 py-8">{{workerProfit}}</div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
+            <app-sale-widget></app-sale-widget>
             <!-- Widget 7 -->
             <div class="mb-48" [ngClass.lt-lg]="'mr-32'" [ngClass.xs]="'mr-0'">
 

@@ -11,6 +11,7 @@ import { TerminalService } from './../../shared/services/terminal.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
 import { VehicleService } from './../../shared/services/vehicle.service';
+import { SaleWidgetComponent } from './components/widgets/sale-widget/sale-widget.component';
 const routes = [
     {
         path: '',
@@ -19,7 +20,7 @@ const routes = [
 ];
 
 @NgModule({
-    declarations: [FerryTerminalComponent, FerryCardComponent],
+    declarations: [FerryTerminalComponent, FerryCardComponent, SaleWidgetComponent],
     imports: [
         RouterModule.forChild(routes),
 
