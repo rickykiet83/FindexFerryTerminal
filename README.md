@@ -42,5 +42,5 @@ Created with CodeSandbox
 
 
 ## Getting Started --PRODUCTION
-- [Findex Terminal][f]
+- [Findex Terminal]
 [f]: https://main.d56onsod8h3kh.amplifyapp.com/ferry-terminal
