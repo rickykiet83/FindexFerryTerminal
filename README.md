@@ -23,7 +23,7 @@ Created with CodeSandbox
 [karma]: https://karma-runner.github.io/latest/index.html
 
 
-## Getting Started
+## Getting Started --DEVELOPMENT
 1. `git clone https://github.com/rickykiet83/FindexFerryTerminal && cd FindexFerryTerminal`
 2. Run the following commands at the root of the folder (requires Node.js):
    - `npm install`
@@ -39,3 +39,8 @@ Created with CodeSandbox
 
    - Test components: `npm run test`
    - Test UI End-to-End with cypress: `npm run e2e`
+
+
+## Getting Started --PRODUCTION
+[Findex-Ferry-Terminal][findex]
+[findex]: https://main.d56onsod8h3kh.amplifyapp.com/ferry-terminal
