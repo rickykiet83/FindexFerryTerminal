@@ -22,12 +22,7 @@ export const navigation: FuseNavigation[] = [
                 type: 'item',
                 icon: 'email',
                 url: '/ferry-terminal',
-                badge: {
-                    title: '25',
-                    translate: 'NAV.FERRY_TERMINAL.BADGE',
-                    bg: '#F44336',
-                    fg: '#FFFFFF'
-                }
+
             }
         ]
     }

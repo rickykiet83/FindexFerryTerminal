@@ -6,11 +6,8 @@ import { ITerminalProvider } from './../interfaces/terminal.interface';
 import { IVehicle } from './../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
 import { TicketModel } from '../models/ticket.model';
-import { VehicleModel } from '../models/vehicle.model';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class TerminalService implements ITerminalProvider {
 
     private smallFerry = new FerryModel('Small Ferry', 8, FerrySize.small);
