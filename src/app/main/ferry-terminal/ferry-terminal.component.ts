@@ -1,3 +1,4 @@
+import { TerminalService } from './../../shared/services/terminal.service';
 import { FerryService } from 'app/shared/services/ferry.service';
 import { FerryModel } from './../../shared/models/ferry.model';
 import { VehicleModel } from './../../shared/models/vehicle.model';
@@ -18,11 +19,12 @@ export class FerryTerminalComponent implements OnInit {
     constructor(
         @Inject(VEHICLE_PROVIDER) private vehicleProvider: IVehicleProvider,
         private ferryService: FerryService,
+        private terminalService: TerminalService,
     ) {
     }
 
     ngOnInit(): void {
-        this.ferries = this.ferryService.GetFerries();
+        this.ferries = this.terminalService.GetFerries();
     }
 
     public getVehicle() {
@@ -36,6 +38,6 @@ export class FerryTerminalComponent implements OnInit {
     }
 
     get isAllFull() {
-        return this.ferryService.isAllFerryFull;
+        return this.terminalService.isAllFerryFull;
     }
 }

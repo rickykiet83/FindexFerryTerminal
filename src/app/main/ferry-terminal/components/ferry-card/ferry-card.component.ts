@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { FerryModel } from './../../../../shared/models/ferry.model';
+import { FerryService } from 'app/shared/services/ferry.service';
 
 @Component({
     selector: 'app-ferry-card',
@@ -13,8 +14,7 @@ export class FerryCardComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void { }
 
     get totalItem(): number {
         return this.ferry?.totalVehicle;

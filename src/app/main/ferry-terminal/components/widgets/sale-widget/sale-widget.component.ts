@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FerryService } from 'app/shared/services/ferry.service';
+import { TerminalService } from './../../../../../shared/services/terminal.service';
 
 @Component({
     selector: 'app-sale-widget',
@@ -11,24 +12,25 @@ export class SaleWidgetComponent implements OnInit {
 
     constructor(
         private ferryService: FerryService,
+        private terminalService: TerminalService,
     ) { }
 
     ngOnInit(): void {
     }
 
     get terminalProfit(): number {
-        return this.ferryService.terminalProfit;
+        return this.terminalService.terminalProfit;
     }
 
     get workerProfit(): number {
-        return this.ferryService.workerProfit;
+        return this.terminalService.workerProfit;
     }
 
     get sumOfSales(): number {
-        return this.ferryService.sumOfSales;
+        return this.terminalService.sumOfSales;
     }
 
     get totalTicket(): number {
-        return this.ferryService.totalTicket;
+        return this.terminalService.totalTicket;
     }
 }

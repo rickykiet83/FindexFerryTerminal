@@ -18,7 +18,6 @@ export class TerminalService implements ITerminalProvider {
     private ferries: FerryModel[] = [];
     private tickets: TicketModel[] = [];
 
-    private vehicles: IVehicle[] = [];
     private terminalWorkerBonus = 0.1;
     private terminalBonus = 0.9;
 
@@ -41,16 +40,8 @@ export class TerminalService implements ITerminalProvider {
         return this.ferries;
     }
 
-    AddVehicle(item: IVehicle) {
-        this.vehicles.push(item);
-        this.GenerateTicket(item);
-    }
 
-    GetVehicles(): VehicleModel[] {
-        return this.vehicles.map(v => new VehicleModel(v.type, v.category));
-    }
-
-    private GenerateTicket(item: IVehicle) {
+    GenerateTicket(item: IVehicle) {
         const ticket = new TicketModel(item.type);
         this.tickets.push(ticket);
         this.onTicketsChanged.next(this.tickets);

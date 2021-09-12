@@ -7,7 +7,13 @@ import { TerminalService } from './terminal.service';
 import { VehicleSize } from '../enums/vehicle.enum';
 
 @Injectable()
-export class FerryService extends TerminalService implements IFerryProvider {
+export class FerryService implements IFerryProvider {
+
+    constructor(private terminalService: TerminalService) {
+        if (this.terminalService.GetFerries().length === 0) {
+            throw new Error('Terminal should have at lease one Ferry!');
+        }
+    }
 
     FerryStart(id: string | number) {
         this.GetFerryById(id).Go();
@@ -18,22 +24,21 @@ export class FerryService extends TerminalService implements IFerryProvider {
         switch (item.category) {
 
             case VehicleSize.small:
-                ferryAvail = this.GetFerriesBySize(FerrySize.small).filter(f => !f.isFull)[0];
+                ferryAvail = this.terminalService.GetFerriesBySize(FerrySize.small).filter(f => !f.isFull)[0];
                 break;
 
             case VehicleSize.large:
-                ferryAvail = this.GetFerriesBySize(FerrySize.large).filter(f => !f.isFull)[0];
+                ferryAvail = this.terminalService.GetFerriesBySize(FerrySize.large).filter(f => !f.isFull)[0];
                 break;
         }
 
         if (ferryAvail) {
+            this.terminalService.GenerateTicket(item);
             this.GetFerryById(ferryAvail.id).addVehicle(item);
-            super.AddVehicle(item);
         }
     }
 
     GetFerryById(id: number | string): FerryModel {
-        return this.GetFerries().find(f => f.id === id);
+        return this.terminalService.GetFerries().find(f => f.id === id);
     }
-
 }
