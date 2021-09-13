@@ -13,11 +13,16 @@ export class TerminalService implements ITerminalProvider {
     private ferries: FerryModel[] = [];
     private tickets: TicketModel[] = [];
 
-    private terminalWorkerBonus = 0.1;
-    private terminalBonus = 0.9;
-
     constructor() {
         this.initFerries();
+    }
+
+    get terminalWorkerBonus(): number {
+        return 0.1;
+    };
+
+    get terminalBonus(): number {
+        return 0.9;
     }
 
     private initFerries() {
@@ -52,32 +57,5 @@ export class TerminalService implements ITerminalProvider {
 
     get isAllFerryFull(): boolean {
         return this.ferries.filter(f => f.isFull).length === this.totalFerry;
-    }
-
-    get workerProfit(): number {
-        if (this.GetTickets().length > 0) {
-            const total = this.GetTickets().map(t => t.cost)
-                .reduce((accumulator, currentValue) => accumulator + (currentValue * this.terminalWorkerBonus), 0);
-            return +total.toFixed(2);
-        }
-        return 0;
-    }
-
-    get terminalProfit(): number {
-        if (this.GetTickets().length > 0) {
-            const total = this.GetTickets().map(t => t.cost)
-                .reduce((accumulator, currentValue) => accumulator + (currentValue * this.terminalBonus), 0);
-            return +total.toFixed(2);
-        }
-        return 0;
-    }
-
-    get sumOfSales(): number {
-        if (this.GetTickets().length > 0) {
-            const total = this.GetTickets().map(t => t.cost)
-                .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-            return total;
-        }
-        return 0;
     }
 }
