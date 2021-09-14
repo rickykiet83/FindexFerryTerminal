@@ -1,8 +1,9 @@
+import { ISale } from './../interfaces/sale.interface';
 import { Injectable } from '@angular/core';
 import { TerminalService } from './terminal.service';
 
 @Injectable()
-export class SaleService {
+export class SaleService implements ISale {
 
     constructor(private terminalService: TerminalService) {
         if (this.terminalService.GetFerries().length === 0) {
@@ -10,7 +11,7 @@ export class SaleService {
         }
     }
 
-    get terminalProfit(): number {
+    terminalProfit(): number {
         if (this.terminalService.GetTickets().length > 0) {
             const total = this.terminalService.GetTickets().map(t => t.cost)
                 .reduce((accumulator, currentValue) => accumulator + (currentValue * this.terminalService.terminalBonus), 0);
@@ -19,7 +20,7 @@ export class SaleService {
         return 0;
     }
 
-    get workerProfit(): number {
+    workerProfit(): number {
         if (this.terminalService.GetTickets().length > 0) {
             const total = this.terminalService.GetTickets().map(t => t.cost)
                 .reduce((accumulator, currentValue) => accumulator + (currentValue * this.terminalService.terminalWorkerBonus), 0);
@@ -28,7 +29,7 @@ export class SaleService {
         return 0;
     }
 
-    get sumOfSales(): number {
+    sumOfSales(): number {
         if (this.terminalService.GetTickets().length > 0) {
             const total = this.terminalService.GetTickets().map(t => t.cost)
                 .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -37,7 +38,7 @@ export class SaleService {
         return 0;
     }
 
-    get totalTicket() {
+    totalTicket() {
         return this.terminalService.totalTicket;
     }
 }

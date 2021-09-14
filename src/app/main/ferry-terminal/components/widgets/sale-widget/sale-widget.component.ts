@@ -17,18 +17,18 @@ export class SaleWidgetComponent implements OnInit {
     }
 
     get workerProfit(): number {
-        return this.saleService.workerProfit;
+        return this.saleService.workerProfit();
     }
 
     get sumOfSales(): number {
-        return this.saleService.sumOfSales;
+        return this.saleService.sumOfSales();
     }
 
     get totalTicket(): number {
-        return this.saleService.totalTicket;
+        return this.saleService.totalTicket();
     }
 
     get terminalProfit(): number {
-        return this.saleService.terminalProfit
+        return this.saleService.terminalProfit();
     }
 }
