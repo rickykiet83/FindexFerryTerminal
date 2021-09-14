@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { SaleService } from 'app/shared/services/sale.service';
 import { SaleWidgetComponent } from './components/widgets/sale-widget/sale-widget.component';
 import { TerminalService } from './../../shared/services/terminal.service';
+import { TicketService } from './../../shared/services/ticket.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { VEHICLE_PROVIDER } from './../../shared/interfaces/ivehicle.provider';
 import { VehicleService } from './../../shared/services/vehicle.service';
@@ -33,7 +34,7 @@ const routes = [
         MatCardModule
     ],
     providers: [
-        FerryService, TerminalService, SaleService,
+        FerryService, TerminalService, SaleService, TicketService,
         { provide: VEHICLE_PROVIDER, useClass: VehicleService },
     ],
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SaleService } from './../../../../../shared/services/sale.service';
+import { TicketService } from './../../../../../shared/services/ticket.service';
 
 @Component({
     selector: 'app-sale-widget',
@@ -11,6 +12,7 @@ export class SaleWidgetComponent implements OnInit {
 
     constructor(
         private saleService: SaleService,
+        private ticketService: TicketService,
     ) { }
 
     ngOnInit(): void {
@@ -25,7 +27,7 @@ export class SaleWidgetComponent implements OnInit {
     }
 
     get totalTicket(): number {
-        return this.saleService.totalTicket();
+        return this.ticketService.totalTicket;
     }
 
     get terminalProfit(): number {

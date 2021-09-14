@@ -4,12 +4,16 @@ import { IFerryProvider } from '../interfaces/iferry.provider';
 import { IVehicle } from '../interfaces/vehicle.interface';
 import { Injectable } from '@angular/core';
 import { TerminalService } from './terminal.service';
+import { TicketService } from './ticket.service';
 import { VehicleSize } from '../enums/vehicle.enum';
 
 @Injectable()
 export class FerryService implements IFerryProvider {
 
-    constructor(private terminalService: TerminalService) {
+    constructor(
+        private terminalService: TerminalService,
+        private ticketService: TicketService,
+    ) {
         if (this.terminalService.GetFerries().length === 0) {
             throw new Error('Terminal should have at lease one Ferry!');
         }
@@ -35,7 +39,7 @@ export class FerryService implements IFerryProvider {
         }
 
         if (ferryAvail) {
-            this.terminalService.GenerateTicket(item);
+            this.ticketService.GenerateTicket(item);
             this.GetFerryById(ferryAvail.id).addVehicle(item);
         }
     }

@@ -4,7 +4,6 @@ import { TicketModel } from './../models/ticket.model';
 
 export interface ITerminalProvider {
     GetFerries(): FerryModel[];
-    GetTickets(): TicketModel[];
     totalFerry: number;
     isAllFerryFull: boolean;
     GetFerriesBySize(size: FerrySize): FerryModel[];
